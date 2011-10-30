@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://research.sun.com/wadl/2006/10 wadl.xsd" xmlns="http://research.sun.com/wadl/2006/10"> 
+<resources base="http://id.outlets.pk/"> 
+<resource path="works"> 
+<doc xml:lang="en" title="return (Sample Value: list of work)"> 
+Estimated Type (supposed): [xsd:string]</doc> 
+<method name="GET"> 
+<request> 
+<param name="appid" type="xsd:string" style="query"> 
+<doc xml:lang="en" title="appid (Sample Value: BlankPageDemo)"> 
+Estimated Type (supposed): [xsd:string]</doc> 
+</param> 
+<param name="oauth_token" type="xsd:string" style="query"> 
+<doc xml:lang="en" title="oauth_token (Sample Value: access_token)"> 
+Estimated Type (supposed): [xsd:string]</doc> 
+</param>
+<param name="output" type="xsd:string" style="query"> 
+<doc xml:lang="en" title="output (Sample Value: xml)"> 
+Estimated Type (supposed): [xsd:string]</doc> 
+</param>  
+</request> 
+</method> 
+</resource>
+<resource path="work"> 
+<method name="GET"> 
+<request> 
+<param name="appid" type="xsd:string" style="query"> 
+<doc xml:lang="en" title="appid (Sample Value: BlankPageDemo)"> 
+Estimated Type (supposed): [xsd:string]</doc> 
+</param> 
+<param name="oauth_token" type="xsd:string" style="query"> 
+<doc xml:lang="en" title="oauth_token (Sample Value: access_token)"> 
+Estimated Type (supposed): [xsd:string]</doc> 
+</param>
+<param name="output" type="xsd:string" style="query"> 
+<doc xml:lang="en" title="output (Sample Value: xml)"> 
+Estimated Type (supposed): [xsd:string]</doc> 
+</param>  
+<param name="id" type="xsd:string" style="query"> 
+<doc xml:lang="en" title="work_id (Sample Value: work_id)"> 
+Estimated Type (supposed): [xsd:string]</doc> 
+</param>
+</request> 
+</method> 
+</resource> 
+<resource path="work"> 
+<doc xml:lang="en" title="update (Sample Value: update work of provided id)"> 
+Estimated Type (supposed): [xsd:string]</doc>
+<method name="PUT"> 
+<request> 
+<param name="appid" type="xsd:string" style="query"> 
+<doc xml:lang="en" title="appid (Sample Value: BlankPageDemo)"> 
+Estimated Type (supposed): [xsd:string]</doc> 
+</param> 
+<param name="oauth_token" type="xsd:string" style="query"> 
+<doc xml:lang="en" title="oauth_token (Sample Value: access_token)"> 
+Estimated Type (supposed): [xsd:string]</doc> 
+</param>
+<param name="output" type="xsd:string" style="query"> 
+<doc xml:lang="en" title="output (Sample Value: xml)"> 
+Estimated Type (supposed): [xsd:string]</doc> 
+</param>  
+<param name="id" type="xsd:string" style="query"> 
+<doc xml:lang="en" title="work_id (Sample Value: work_id)"> 
+Estimated Type (supposed): [xsd:string]</doc> 
+</param>
+</request> 
+</method> 
+</resource>
+<resource path="work"> 
+<doc xml:lang="en" title="Delete (Sample Value: delete work of provided id)"> 
+Estimated Type (supposed): [xsd:string]</doc>
+<method name="DELETE"> 
+<request> 
+<param name="appid" type="xsd:string" style="query"> 
+<doc xml:lang="en" title="appid (Sample Value: BlankPageDemo)"> 
+Estimated Type (supposed): [xsd:string]</doc> 
+</param> 
+<param name="oauth_token" type="xsd:string" style="query"> 
+<doc xml:lang="en" title="oauth_token (Sample Value: access_token)"> 
+Estimated Type (supposed): [xsd:string]</doc> 
+</param>
+<param name="output" type="xsd:string" style="query"> 
+<doc xml:lang="en" title="output (Sample Value: xml)"> 
+Estimated Type (supposed): [xsd:string]</doc> 
+</param>  
+<param name="id" type="xsd:string" style="query"> 
+<doc xml:lang="en" title="work_id (Sample Value: work_id)"> 
+Estimated Type (supposed): [xsd:string]</doc> 
+</param>
+</request> 
+</method> 
+</resource> 
+</resources> 
+</application> 
