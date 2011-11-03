@@ -1,95 +1,606 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://research.sun.com/wadl/2006/10 wadl.xsd" xmlns="http://research.sun.com/wadl/2006/10"> 
-<resources base="http://id.outlets.pk/"> 
-<resource path="works"> 
-<doc xml:lang="en" title="return (Sample Value: list of work)"> 
-Estimated Type (supposed): [xsd:string]</doc> 
-<method name="GET"> 
-<request> 
-<param name="appid" type="xsd:string" style="query"> 
-<doc xml:lang="en" title="appid (Sample Value: BlankPageDemo)"> 
-Estimated Type (supposed): [xsd:string]</doc> 
-</param> 
-<param name="oauth_token" type="xsd:string" style="query"> 
-<doc xml:lang="en" title="oauth_token (Sample Value: access_token)"> 
-Estimated Type (supposed): [xsd:string]</doc> 
-</param>
-<param name="output" type="xsd:string" style="query"> 
-<doc xml:lang="en" title="output (Sample Value: xml)"> 
-Estimated Type (supposed): [xsd:string]</doc> 
-</param>  
-</request> 
-</method> 
-</resource>
-<resource path="work"> 
-<method name="GET"> 
-<request> 
-<param name="appid" type="xsd:string" style="query"> 
-<doc xml:lang="en" title="appid (Sample Value: BlankPageDemo)"> 
-Estimated Type (supposed): [xsd:string]</doc> 
-</param> 
-<param name="oauth_token" type="xsd:string" style="query"> 
-<doc xml:lang="en" title="oauth_token (Sample Value: access_token)"> 
-Estimated Type (supposed): [xsd:string]</doc> 
-</param>
-<param name="output" type="xsd:string" style="query"> 
-<doc xml:lang="en" title="output (Sample Value: xml)"> 
-Estimated Type (supposed): [xsd:string]</doc> 
-</param>  
-<param name="id" type="xsd:string" style="query"> 
-<doc xml:lang="en" title="work_id (Sample Value: work_id)"> 
-Estimated Type (supposed): [xsd:string]</doc> 
-</param>
-</request> 
-</method> 
-</resource> 
-<resource path="work"> 
-<doc xml:lang="en" title="update (Sample Value: update work of provided id)"> 
-Estimated Type (supposed): [xsd:string]</doc>
-<method name="PUT"> 
-<request> 
-<param name="appid" type="xsd:string" style="query"> 
-<doc xml:lang="en" title="appid (Sample Value: BlankPageDemo)"> 
-Estimated Type (supposed): [xsd:string]</doc> 
-</param> 
-<param name="oauth_token" type="xsd:string" style="query"> 
-<doc xml:lang="en" title="oauth_token (Sample Value: access_token)"> 
-Estimated Type (supposed): [xsd:string]</doc> 
-</param>
-<param name="output" type="xsd:string" style="query"> 
-<doc xml:lang="en" title="output (Sample Value: xml)"> 
-Estimated Type (supposed): [xsd:string]</doc> 
-</param>  
-<param name="id" type="xsd:string" style="query"> 
-<doc xml:lang="en" title="work_id (Sample Value: work_id)"> 
-Estimated Type (supposed): [xsd:string]</doc> 
-</param>
-</request> 
-</method> 
-</resource>
-<resource path="work"> 
-<doc xml:lang="en" title="Delete (Sample Value: delete work of provided id)"> 
-Estimated Type (supposed): [xsd:string]</doc>
-<method name="DELETE"> 
-<request> 
-<param name="appid" type="xsd:string" style="query"> 
-<doc xml:lang="en" title="appid (Sample Value: BlankPageDemo)"> 
-Estimated Type (supposed): [xsd:string]</doc> 
-</param> 
-<param name="oauth_token" type="xsd:string" style="query"> 
-<doc xml:lang="en" title="oauth_token (Sample Value: access_token)"> 
-Estimated Type (supposed): [xsd:string]</doc> 
-</param>
-<param name="output" type="xsd:string" style="query"> 
-<doc xml:lang="en" title="output (Sample Value: xml)"> 
-Estimated Type (supposed): [xsd:string]</doc> 
-</param>  
-<param name="id" type="xsd:string" style="query"> 
-<doc xml:lang="en" title="work_id (Sample Value: work_id)"> 
-Estimated Type (supposed): [xsd:string]</doc> 
-</param>
-</request> 
-</method> 
-</resource> 
-</resources> 
+    <resources base="http://id.outlets.pk/">
+        <doc xml:lang="en" title="every API call contain a query param ( oauth_token=token) and query param output(output=json) ) "> 
+Estimated Type (supposed): [xsd:string]
+        </doc>
+        <resource path="works"> 
+            <doc xml:lang="en" title="return (Sample Value: list of work)"> 
+Estimated Type (supposed): [xsd:string]
+            </doc> 
+            <method name="GET"> 
+                <request> 
+                    <param name="output" type="xsd:string" style="query"> 
+                        <doc xml:lang="en" title="output (Sample Value: json)"> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request>
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="404" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+        </resource>
+        <resource path="work"> 
+            <method name="POST">
+                <doc xml:lang="en" title="return (Description: Add new work record to the user work history )"> 
+Estimated Type (supposed): [xsd:string]
+                </doc>
+                <request> 
+                    <param name="output" type="xsd:string" style="query"> 
+                        <doc xml:lang="en" title="output (Sample Value: json)"> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request> 
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+        </resource> 
+        <resource path="work/{id}"> 
+            <method name="PUT"> 
+                <doc xml:lang="en" title="update (Sample Value: update work of provided id)"> 
+Estimated Type (supposed): [xsd:string]
+                </doc>
+                <request> 
+                    <param name="id" type="xsd:int" style="template"> 
+                        <doc xml:lang="en" title="output (Sample Value: 320)"> 
+Estimated Type (supposed): [xsd:int]
+                        </doc> 
+                    </param> 
+                    <param name="output" type="xsd:string" style="query"> 
+                        <doc xml:lang="en" title="output (Sample Value: json)"> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param> 
+                </request> 
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="404" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+            <method name="DELETE"> 
+                <doc xml:lang="en" title="delete (Description: delete work record of provided id)"> 
+Estimated Type (supposed): [xsd:int]
+                </doc>
+                <request>
+                    <param name="id" type="xsd:int" style="template"> 
+                        <doc xml:lang="en" title="id (Sample Value: 320)"> 
+Estimated Type (supposed): [xsd:int]
+                        </doc> 
+                    </param>
+                    <param name="output" type="xsd:string" style="query"> 
+                        <doc xml:lang="en" title="output (Sample Value: json)"> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param> 
+                </request> 
+            </method> 
+        </resource>
+        <resource path="profile">
+            <method name="GET"> 
+                <request> 
+                    <param name="output" type="xsd:string" style="query"> 
+                        <doc xml:lang="en" title="output (Sample Value: json)"> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request>
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="404" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+            <method name="PUT"> 
+                <request> 
+                    <param name="output" type="xsd:string" style="query"> 
+                        <doc xml:lang="en" title="output (Sample Value: json)"> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request>
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="404" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+            
+            
+        </resource>
+        <resource path="profile.dob">
+            <method name="GET"> 
+                <request> 
+                    <param name="output" type="xsd:string" style="query"> 
+                        <doc xml:lang="en" title="output (Sample Value: json)"> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request>
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method>
+            <method name="PUT"> 
+                <request> 
+                    <param name="output" type="xsd:string" style="query"> 
+                        <doc xml:lang="en" title="output (Sample Value: json)"> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request>
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+            
+        </resource>
+        <resource path="contacts"> 
+            <method name="GET">
+                <doc xml:lang="en" title="return (Description: list of all shared contacts )"> 
+Estimated Type (supposed): [xsd:string]
+                </doc>
+                <request> 
+                    <param name="output" type="xsd:string" style="query"> 
+                        <doc xml:lang="en" title="output (Sample Value: json)"> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request> 
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+        </resource>       
+        <resource path="contact.ims"> 
+            <method name="GET">
+                <doc xml:lang="en" title="return (Description: list of all shared internet messengers )"> 
+Estimated Type (supposed): [xsd:string]
+                </doc>
+                <request> 
+                    <param name="output" type="xsd:string" style="query"> 
+                        <doc xml:lang="en" title="output (Sample Value: json)"> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request> 
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+            <method name="POST">
+                <doc xml:lang="en" title="insert (Description: add new  internet messenger )"> 
+Estimated Type (supposed): [xsd:string]
+                </doc>
+                <request> 
+                    <param name="output" type="xsd:string" style="query"> 
+                        <doc xml:lang="en" title="output (Sample Value: json)"> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request> 
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+        </resource> 
+       <resource path="contact.im/{id}"> 
+            <method name="GET">
+                <doc xml:lang="en" title="return (Description: return specific IM detail )"> 
+Estimated Type (supposed): [xsd:string]
+                </doc>
+                <request> 
+                    <param name="id" type="xsd:int" style="template"> 
+                        <doc xml:lang="en" title="Parameter (Sample Value: integer )  "> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request> 
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+            <method name="PUT">
+                <doc xml:lang="en" title="return (Description: update specific IM detail )"> 
+Estimated Type (supposed): [xsd:string]
+                </doc>
+                <request> 
+                    <param name="id" type="xsd:int" style="template"> 
+                        <doc xml:lang="en" title="Parameter (Sample Value: integer )  "> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request> 
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+            <method name="DELETE">
+                <doc xml:lang="en" title="return (Description: delete specific IM detail )"> 
+Estimated Type (supposed): [xsd:string]
+                </doc>
+                <request> 
+                    <param name="id" type="xsd:int" style="template"> 
+                        <doc xml:lang="en" title="Parameter (Sample Value: integer )  "> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request> 
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+        </resource>
+         <resource path="contact.emails"> 
+            <method name="GET">
+                <doc xml:lang="en" title="return (Description: list of all shared emails )"> 
+Estimated Type (supposed): [xsd:string]
+                </doc>
+                <request> 
+                    <param name="output" type="xsd:string" style="query"> 
+                        <doc xml:lang="en" title="output (Sample Value: json)"> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request> 
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+            <method name="POST">
+                <doc xml:lang="en" title="insert (Description: add new  Email )"> 
+Estimated Type (supposed): [xsd:string]
+                </doc>
+                <request> 
+                    <param name="output" type="xsd:string" style="query"> 
+                        <doc xml:lang="en" title="output (Sample Value: json)"> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request> 
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+        </resource> 
+        <resource path="contact.email/{id}"> 
+            <method name="GET">
+                <doc xml:lang="en" title="return (Description: return specific Email detail )"> 
+Estimated Type (supposed): [xsd:string]
+                </doc>
+                <request> 
+                    <param name="id" type="xsd:int" style="template"> 
+                        <doc xml:lang="en" title="Parameter (Sample Value: integer )  "> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request> 
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+            <method name="PUT">
+                <doc xml:lang="en" title="return (Description: update email of provided id )"> 
+Estimated Type (supposed): [xsd:string]
+                </doc>
+                <request> 
+                    <param name="id" type="xsd:int" style="template"> 
+                        <doc xml:lang="en" title="Parameter (Sample Value: integer )  "> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request> 
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+            <method name="DELETE">
+                <doc xml:lang="en" title="return (Description: delete specific email provided id )"> 
+Estimated Type (supposed): [xsd:string]
+                </doc>
+                <request> 
+                    <param name="id" type="xsd:int" style="template"> 
+                        <doc xml:lang="en" title="Parameter (Sample Value: integer )  "> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request> 
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+        </resource>
+         <resource path="contact.phones"> 
+            <method name="GET">
+                <doc xml:lang="en" title="return (Description: list of all shared phone nos. )"> 
+Estimated Type (supposed): [xsd:string]
+                </doc>
+                <request> 
+                    <param name="output" type="xsd:string" style="query"> 
+                        <doc xml:lang="en" title="output (Sample Value: json)"> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request> 
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+            <method name="POST">
+                <doc xml:lang="en" title="insert (Description: add new Phone no. )"> 
+Estimated Type (supposed): [xsd:string]
+                </doc>
+                <request> 
+                    <param name="output" type="xsd:string" style="query"> 
+                        <doc xml:lang="en" title="output (Sample Value: json)"> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request> 
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+        </resource> 
+        <resource path="contact.phone/{id}"> 
+            <method name="GET">
+                <doc xml:lang="en" title="return (Description: return specific phone detail )"> 
+Estimated Type (supposed): [xsd:string]
+                </doc>
+                <request> 
+                    <param name="id" type="xsd:int" style="template"> 
+                        <doc xml:lang="en" title="Parameter (Sample Value: integer )  "> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request> 
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+            <method name="PUT">
+                <doc xml:lang="en" title="return (Description: update phone no. of provided id )"> 
+Estimated Type (supposed): [xsd:string]
+                </doc>
+                <request> 
+                    <param name="id" type="xsd:int" style="template"> 
+                        <doc xml:lang="en" title="Parameter (Sample Value: integer )  "> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request> 
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+            <method name="DELETE">
+                <doc xml:lang="en" title="return (Description: delete phone no. of provided id )"> 
+Estimated Type (supposed): [xsd:string]
+                </doc>
+                <request> 
+                    <param name="id" type="xsd:int" style="template"> 
+                        <doc xml:lang="en" title="Parameter (Sample Value: integer )  "> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request> 
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+        </resource>
+         <resource path="educations"> 
+            <method name="GET">
+                <doc xml:lang="en" title="return (Description: list of educations. )"> 
+Estimated Type (supposed): [xsd:string]
+                </doc>
+                <request> 
+                    <param name="output" type="xsd:string" style="query"> 
+                        <doc xml:lang="en" title="output (Sample Value: json)"> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request> 
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+        </resource>
+         <resource path="education.highschools"> 
+            <method name="GET">
+                <doc xml:lang="en" title="return (Description: list of highschool educations. )"> 
+Estimated Type (supposed): [xsd:string]
+                </doc>
+                <request> 
+                    <param name="output" type="xsd:string" style="query"> 
+                        <doc xml:lang="en" title="output (Sample Value: json)"> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request> 
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+            <method name="POST">
+                <doc xml:lang="en" title="(Description: Add new highschool education. )"> 
+Estimated Type (supposed): [xsd:string]
+                </doc>
+                <request> 
+                    <param name="output" type="xsd:string" style="query"> 
+                        <doc xml:lang="en" title="output (Sample Value: json)"> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request> 
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+            
+            
+        </resource>
+            <resource path="education.graduations"> 
+            <method name="GET">
+                <doc xml:lang="en" title="return (Description: list of graduation education. )"> 
+Estimated Type (supposed): [xsd:string]
+                </doc>
+                <request> 
+                    <param name="output" type="xsd:string" style="query"> 
+                        <doc xml:lang="en" title="output (Sample Value: json)"> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request> 
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+            <method name="POST">
+                <doc xml:lang="en" title="(Description: Add new graduation education. )"> 
+Estimated Type (supposed): [xsd:string]
+                </doc>
+                <request> 
+                    <param name="output" type="xsd:string" style="query"> 
+                        <doc xml:lang="en" title="output (Sample Value: json)"> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request> 
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method>
+        </resource>
+         <resource path="education.highschool/{id}"> 
+            <method name="GET">
+                <doc xml:lang="en" title="return (Description: list of highschool educations. )"> 
+Estimated Type (supposed): [xsd:string]
+                </doc>
+                <request> 
+                    <param name="id" type="xsd:int" style="template"> 
+                        <doc xml:lang="en" title="id (Sample Value: integer)"> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request> 
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+            <method name="PUT">
+                <doc xml:lang="en" title="return (Description: update highschool education of provided id. )"> 
+Estimated Type (supposed): [xsd:string]
+                </doc>
+                <request> 
+                    <param name="id" type="xsd:int" style="template"> 
+                        <doc xml:lang="en" title="id (Sample Value: integer)"> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request> 
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+            <method name="DELETE">
+                <doc xml:lang="en" title="return (Description: Delete highschool education of provided id. )"> 
+Estimated Type (supposed): [xsd:string]
+                </doc>
+                <request> 
+                    <param name="id" type="xsd:int" style="template"> 
+                        <doc xml:lang="en" title="id (Sample Value: integer)"> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request> 
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+            
+            
+        </resource>
+        
+        
+        
+            <resource path="education.graduation/{id}"> 
+            <method name="GET">
+                <doc xml:lang="en" title="return (Description: list of graduation education.)"> 
+Estimated Type (supposed): [xsd:string]
+                </doc>
+                <request> 
+                   <param name="id" type="xsd:int" style="template"> 
+                        <doc xml:lang="en" title="id (Sample Value: integer)"> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>
+                </request> 
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+            <method name="PUT">
+                <doc xml:lang="en" title="return (Description: update graduation education of provided id. )"> 
+Estimated Type (supposed): [xsd:string]
+                </doc>
+                <request> 
+                    <param name="id" type="xsd:int" style="template"> 
+                        <doc xml:lang="en" title="id (Sample Value: integer)"> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request> 
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+            <method name="DELETE">
+                <doc xml:lang="en" title="return (Description: Delete graduation education of provided id. )"> 
+Estimated Type (supposed): [xsd:string]
+                </doc>
+                <request> 
+                    <param name="id" type="xsd:int" style="template"> 
+                        <doc xml:lang="en" title="id (Sample Value: integer)"> 
+Estimated Type (supposed): [xsd:string]
+                        </doc> 
+                    </param>  
+                </request> 
+                <response>
+                    <representation  mediaType="application/json" element="yn:resultSet"   />
+                    <fault  status="403" mediaType="application/json" element="ya:error"   />
+                </response>
+            </method> 
+        </resource>
+    </resources> 
 </application> 
