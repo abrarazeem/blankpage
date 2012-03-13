@@ -1,0 +1,14 @@
+{% extends "base.html"%}
+
+{% block title %} SignUP {% endblock  %}
+<h2>Posts</h2>
+{% block content %}
+
+<form action="." method="POST">
+<table width="500px">
+{{form.as_table}}
+
+<tr><td></td><td><input type="submit" value="submit"> </td></tr>
+</table>
+</form>
+ {% endblock  %}

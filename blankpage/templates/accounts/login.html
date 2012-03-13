@@ -1,0 +1,32 @@
+{% extends "base.html"%}
+
+{% block title %} Login {% endblock  %}
+<h2>Login</h2>
+{% block head_text %} 
+<a href="/accounts/signup" > Signup</a>
+{% endblock%} 
+{% block content %} 
+{{ state }}
+    <form action="/accounts/login/" method="post">
+            {% if next %}
+            <input type="hidden" name="next" value="{{ next }}" />
+            {% endif %}
+        <table>
+            <tr><td>Username:</td>
+                <td><input type="text" name="username" value="{{ username}}" /></td>
+            </tr>
+
+            <tr><td>Password:</td>
+                <td><input type="password" name="password" value="" /><br />
+            </tr>
+
+            <tr><td></td><td><input type="submit" value="Log In" /></td></tr>
+
+            </table>
+        </form>
+
+	</form>
+
+
+ {% endblock  %}
+ {% block sidebar %} This is sidebar {% endblock%} 

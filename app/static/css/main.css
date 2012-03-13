@@ -1,0 +1,75 @@
+body{
+        margin:0 auto;
+
+        }
+    .mybutton {}
+    .mybutton {padding: 10px;background: #c02;color: #FFF;text-decoration: none;border-radius: 5px;}
+    .mybutton:hover{background: #b2b200}
+        #head{
+            background:#505050;
+            width:100%;
+            height:50px;
+        }
+		.center_head{
+			width:970px;
+            margin:0 auto;
+		}
+		a{color:#000}
+        #logo_text{
+            line-height:50px;
+            font-size:26px;
+            color:#fff;
+            font-weight:bold;
+            width:400px;
+			float:left;
+            margin:0 auto;
+        }
+		#logo_text a{color:#FFF;text-decoration:none;}
+		#head_text{
+			line-height:50px;
+            font-size:18px;
+            color:#fff;
+            font-weight:bold;
+            width:400px;
+			float:right;
+            margin:0 auto;
+
+		}
+		#page_head{
+			color:#fff;
+			font-weight:bold;
+			font-size:16px;
+			float:left;
+		}
+        #page{
+            width:970px;
+            margin:0 auto;
+
+
+        }
+        #content{
+            width:500px;
+            float:left;
+            display:block;
+            padding:5px;
+        }
+        #sidebar{
+            width:400px;
+            border-left:1px solid #cdcdcd;
+            float:left;
+            min-height:500px;
+            padding:5px;
+        }
+
+	#sidebar ul li{list-style:none;padding:5px;background:#E6F1F6;margin:2px;}
+    #footerwrap{widows: 100%;background:#0f3b5f;height: 50px;clear: both;}
+    #footer{width: 970px; margin: 0 auto;color: #FFF;font-size: 14px; line-height: 50px}
+        #footer a{text-decoration: underline;color: #FFF;padding: 10px; }
+        #footer a:hover{text-decoration: none}
+        #footer ul li{list-style: none; display: inline-block;}
+       th{
+           text-align: left;
+       }
+        tr{height:40px;}
+        input{height: 30px; font-weight: bold;line-height: 30px}
+        select{height: 30px;font-weight: bold; line-height: 30px;}

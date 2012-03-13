@@ -1,0 +1,22 @@
+{% extends "base.html"%}
+
+{% block title %} Facebook linked{% endblock  %}
+{%  block head %}
+
+{% endblock %}
+<h2>Posts</h2>
+{% block page_head%} Facebook Updates {% endblock  %}
+{% block head_text %} {{user.get_full_name}}  <a href="/accounts/logout"> Logout</a>  {% endblock%}
+{% block content %}
+<h3>Facebook  Data</h3>
+
+    <li>{{ fbprofile.work.employer.id }}</li>
+
+    {% for key, value in fbprofile.items %}
+        {{ key }} = {{ value }}<br>
+
+    {% endfor %}
+ {% endblock  %}
+{% block sidebar %}
+ {% include  "dashboard/sidemenu.html" %}
+{% endblock%}

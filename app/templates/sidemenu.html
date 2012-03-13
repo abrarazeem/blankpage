@@ -1,0 +1,52 @@
+{% block head %}
+
+    <script type="text/javascript">
+   $(document).ready(function(){
+       $("#contacts").click(function(){
+           $.getJSON('http://127.0.0.1:8001/authorize/data/?fetch=education', data ,function(data) {
+            $.each(data,function(i,item){
+                  $('#content').append('<p>'+ item.fields.institute_name +'</p>');
+               });
+
+            });
+       });
+       $('#profile').click(function(){
+            $.ajax({
+               url:'http://127.0.0.1:8001/authorize/data/?fetch=work',
+               success:function(data){
+                        
+                         $.each(data,function(index,value){
+                             console.info(index,value.employer_name);
+                             $('#content').append('<p>'+value.employer_name+'</p>');
+                         });
+
+                },
+                error:function(a,b,c){
+                    console.info(a,b,c);
+                }
+            });              
+
+       });
+
+
+     });
+
+
+
+    </script>
+
+ {% endblock %}
+
+
+<ul>
+        <li><a href="/dashboard/profile/"> Personal and Bio </a></li>
+        <li><a href="/dashboard/work/">  Work</a> </li>
+        <li><a href="/dashboard/education/">  Education</a> </li>
+        <li><a href="#" id="contacts">  Contacts</a> </li>
+	    <li><a href="#">Linked Accounts</a> </li>
+        <li><a href="#">Applications</a> </li>
+	    <li id="list" ><a href="#"> Usage History </a></li>
+	    <li><a href="#">Passwords and Secrets</a> </li>
+	    <li><a href="#">  Export Data</a> </li>
+	    <li><a href="#"> Delete Account</a> </li>
+</ul>

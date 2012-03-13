@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}BlankPage{% endblock  %}
+
+{% block page_head%} Social Application Platform {% endblock  %}
+
+{% block head_text %}
+
+    {% if user.is_authenticated  %}
+       <a href="/dashboard/profile/"> {{user.get_full_name}} </a>   &nbsp;&nbsp; &nbsp;       <a href="accounts/logout"> Logout</a>
+    {% endif %}
+
+
+{% endblock%}
+
+{% block content %}
+
+    <p>
+        BlankPage is a Single Sign-On, User Account and User Profile service.
+        It enables the developers to use a single user account and allow users to login to their websites and applications without registration.</p>
+
+        <p>As Information Technology is going better and efficient in many ways,
+        this helps us to get rid of many repetitive tasks we are performing again and again.
+        This Project uses the OpenID and OAuth as its implements these two standards to achieve the desired functionality in this application.</p>
+        <a class="mybutton" href="/accounts/signup">SignUp </a>
+
+{% endblock  %}
+
+{% block sidebar %}
+  
+
+	<form action="/accounts/login/" method="post">
+		{% if next %}
+		<input type="hidden" name="next" value="{{ next }}" />
+		{% endif %}
+    <table>
+		<tr><td>Username:</td>
+            <td><input type="text" name="username" value="{{ username}}" /></td>
+        </tr>
+
+		<tr><td>Password:</td>
+            <td><input type="password" name="password" value="" /><br />
+        </tr>
+
+        <tr><td></td><td><input type="submit" value="Log In" /></td></tr>
+
+        </table>
+	</form>
+
+
+
+
+{% endblock%}
+
+
+
+
+
+
+

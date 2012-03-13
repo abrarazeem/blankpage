@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %} education {% endblock  %}
+
+<h2>Posts</h2>
+{% block page_head%} Page Title: Education  {% endblock  %}
+{% block head_text %} {% endblock%}
+{% block content %}
+<h3>Education</h3>
+
+{% for education in educations %}
+
+   <p> </ul>
+    <li>{{ education.institute_name}}</li>
+<li>{{ education.get_institute_country_display}}</li>
+<li>{{ education.institute_year}}</li>
+<li>{{ education.get_education_level_display}}</li>
+    </ul>
+    </p>
+{% endfor %}
+
+
+
+
+
+
+ {% endblock  %}
+{% block sidebar %}
+{% include "dashboard/educationmenu.html" %}
+
+{% endblock%}

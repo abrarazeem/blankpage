@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %} education {% endblock  %}
+
+<h2>Posts</h2>
+{% block page_head%} Page Title: Email Accounts  {% endblock  %}
+{% block head_text %} {{user.get_full_name}}  <a href="/accounts/logout"> Logout</a>  {% endblock%}
+{% block content %}
+<h3>email</h3>
+
+{% for email in emails %}
+
+   <p>
+        </ul>
+             <li>{{ email.email}}</li>
+             <li>{{ email.status}}</li>
+             <li>{{ email.public}}</li>
+        </ul>
+   </p>
+{% endfor %}
+
+
+
+
+
+
+ {% endblock  %}
+{% block sidebar %}
+{% include "dashboard/sidemenu.html" %}
+
+{% endblock%}

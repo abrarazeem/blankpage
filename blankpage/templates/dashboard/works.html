@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %} Work {% endblock  %}
+
+<h2>Posts</h2>
+{% block page_head%} Page Title: Work  {% endblock  %}
+{% block head_text %} {{user.get_full_name}}  <a href="/accounts/logout"> Logout</a>  {% endblock%}
+{% block content %}
+<h3>Works</h3>
+
+{% for work in works %}
+
+   <p> </ul>
+    <li>{{ work.employer_name}}</li>
+<li>{{ work.designation}}</li>
+<li>{{ work.get_employer_country_display}}</li>
+<li>{{ work.employment_year}}</li>
+    </ul>
+    </p>
+{% endfor %}
+
+
+
+
+
+
+ {% endblock  %}
+{% block sidebar %}
+{% include "dashboard/workmenu.html" %}
+
+{% endblock%}

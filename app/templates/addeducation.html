@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %} Education {% endblock  %}
+
+{% block page_head%} Dashboard: Education  {% endblock  %}
+{% block head_text %} {{user.get_full_name}}  <a href="/accounts/logout"> Logout</a>  {% endblock%}
+{% block content %}
+<h3>Qualifications</h3>
+
+<form action="/dashboard/education/add/" method="post">
+    <table>
+    {{ form.as_table }}
+    <tr> <td></td><td> <input type="submit" value="Add">    </td>   </tr>
+    </table>
+
+</form>
+ {% endblock  %}
+{% block sidebar %}
+    
+
+{% endblock%}

@@ -1,0 +1,43 @@
+{% extends "base.html"%}
+
+{% block title %} Home {% endblock  %}
+
+<h2>Posts</h2>
+{% block page_head%} Page Title: {% endblock  %}
+{% block head_text %} {{user.get_full_name}}  <a href="/accounts/logout"> Logout</a>  {% endblock%}
+{% block content %}
+
+<h3>Link Accounts</h3>
+
+    <table width="500px">
+    <tr>
+        <td>{%  if twitter == None %}
+                 <a href="/linked/twitter/connect" class="mybutton">Link Twitter</a>
+            {% else %}
+                <a href="/linked/twitter/" class="mybutton">Twitter</a>
+            {% endif %}
+         </td>
+        <td>{%  if facebook == None %}
+                <a href="/linked/facebook/connect" class="mybutton">Link Facebook</a>
+            {% else %}
+                <a href="/linked/facebook/" class="mybutton">Facebook</a>
+            {% endif %}
+         </td>
+    </tr>
+    </table>
+
+
+
+
+
+
+
+{% if user.is_authenticated  %}
+{{user.get_full_name}}
+
+{% endif %}
+
+ {% endblock  %}
+{% block sidebar %}
+ {% include  "dashboard/sidemenu.html" %}
+{% endblock%}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}BlankPage{% endblock  %}
+
+{% block page_head%} Social Application Platform {% endblock  %}
+
+{% block head_text %}
+
+    {% if user.is_authenticated  %}
+    {{user.get_full_name}}  <a href="accounts/logout"> Logout</a>
+    {% endif %}
+
+
+{% endblock%}
+
+{% block content %}
+    
+    {% if application != None %}
+        {%  for app in application %}
+        <h3>  Application : {{ app.name}}</h3>
+        <li>Description : {{ app.description }}</li>
+           <li>Key : {{ app.key}}</li>
+           <li>Secret: {{ app.secret}}</li>
+{% endfor %}
+    {% else %}
+    <h3> NO Application Found </h3>
+    {% endif %}
+
+
+{% endblock  %}
+
+{% block sidebar %}
+   <ul>
+        <li><a href="/applications/add_app/"> Create Application </a></li>
+        <li><a href="#"> Manage Applications</a> </li>
+        <li><a href="/"> Home</a> </li>
+    </ul> 
+
+{% endblock%}
+
+
+
+
+
+
+

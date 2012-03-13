@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %} Profile {% endblock  %}
+
+<h2>Posts</h2>
+{% block page_head%} Page Title: Profile  {% endblock  %}
+{% block head_text %} {{user.get_full_name}}  <a href="/accounts/logout"> Logout</a>  {% endblock%}
+{% block content %}
+<h3>Profile</h3>
+
+<form action="/dashboard/profile/" method="post">
+    <table>
+    {{ profile.as_table }}
+    <tr> <td></td><td> <input type="submit" value="Update">    </td>   </tr>
+    </table>
+
+</form>
+ {% endblock  %}
+{% block sidebar %}
+     <ul>
+        <li><a href="#"> Personal and Bio </a></li>
+        <li><a href="#">  Work</a> </li>
+        <li><a href="#">  Education</a> </li>
+        <li><a href="#">  Contacts</a> </li>
+	<li><a href="#">  Linked Accounts</a> </li>
+        <li><a href="#">  Applications</a> </li>
+	<li><a href="#"> Usage History </a></li>
+	<li><a href="#">  Passwords and Secrets</a> </li>
+	<li><a href="#">  Export Data</a> </li>
+	<li><a href="#"> Delete Account</a> </li>
+    </ul>
+
+{% endblock%}

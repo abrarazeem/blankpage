@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %} Profile {% endblock  %}
+
+<h2>Posts</h2>
+{% block page_head%} Page Title: Profile  {% endblock  %}
+{% block head_text %}
+{% if user.is_authenticated %}
+    {{user.get_full_name}}  <a href="/accounts/logout"> Logout</a>
+{% endif %}
+{% endblock%}
+{% block content %}
+    
+
+<h3>Profile</h3>
+    <table>
+        <tr><th>My name is </th> <td><select>
+            <option>{{ profile.screen_name}}</option>
+ 
+
+            </select></td> </tr>
+        <tr><th>I am a </th><td>
+         {{ profile.get_gender_display }}
+        </td></tr>
+        <tr><th>I am on </th><td>{{ profile.web}}</td></tr>
+        <tr><th>I am  </th><td>{{ profile.about}}</td></tr>
+        <tr><th>I am  </th><td>{{ profile.get_country_display}}</td></tr>
+    </table>
+
+
+
+
+
+ {% endblock  %}
+{% block sidebar %}
+  {% include "dashboard/sidemenu.html" %}
+
+{% endblock%}

@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>Authorize Token</title>
+    <style type="text/css">
+      #box{
+        width:300px;
+        height:300px;
+        background:#cdcdcd;
+        margin:0 auto;
+        padding:20px;
+        border-radius:5px;
+      }
+      
+      
+    </style>
+  </head>
+  <body>
+    <div id="box">
+
+
+    <form action="{% url piston.authentication.oauth.views.authorize_request_token %}" method="POST">
+        <table width="100%">
+    <tr><td colspan="2" style="background: #c02;color: #FFF"> Application Name  </td></tr>
+      {{ form.as_table }}
+       <tr><td></td><td><button type="submit">Confirm</button></td></tr>
+            
+            </table>
+    </form>
+</div>
+  </body>
+</html>

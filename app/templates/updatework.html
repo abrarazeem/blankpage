@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %} Work {% endblock  %}
+
+{% block page_head%} Page Title: Work  {% endblock  %}
+{% block head_text %} {{user.get_full_name}}  <a href="/accounts/logout"> Logout</a>  {% endblock%}
+{% block content %}
+<h3>Work History</h3>
+
+<form action="" method="post">
+    <table>
+
+     {{ form.as_table }}
+
+
+
+    <tr> <td></td><td> <input type="submit" value="Update">    </td>   </tr>
+    </table>
+
+</form>
+ {% endblock  %}
+{% block sidebar %}
+      <ul>
+	    <li><a href="/dashboard/work/add/">Add Work</a> </li>
+	    <li><a href="/dashboard/work/">Manage Work</a> </li>
+	    <li><a href="/dashboard/">Home </a> </li>
+</ul>
+
+{% endblock%}

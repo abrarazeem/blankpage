@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}BlankPage Demo App{% endblock  %}
+
+{% block page_head%} Social Application Platform {% endblock  %}
+
+{% block head_text %}
+
+    {% if user.is_authenticated  %}
+       <a href="/dashboard/profile/"> {{user.get_full_name}} </a>   &nbsp;&nbsp; &nbsp;       <a href="accounts/logout"> Logout</a>
+    {% endif %}
+
+
+{% endblock%}
+
+{% block content %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+        <table>
+        <thead>
+        <tr><th>Employer Name</th><th>Designation</th><th>Year</th><th>Country</th><th>Operations</th></tr>
+        </thead>
+            {% for work in works %}
+        <tr>
+            <td>{{ work.employer_name }}</td>
+            <td>{{ work.designation }}</td>
+            <td>{{ work.employment_year }}</td>
+            <td>{{ work.employer_country }}</td>
+        <td><a href="/dashboard/work/update/{{ work.id}}">Update</a>   <a href="/dashboard/work/delete/{{ work.id }}">Delete</a>  </td></tr>
+            {% endfor %}
+
+        </table>
+{% endblock  %}
+
+{% block sidebar %}
+  <ul>
+	    <li><a href="/dashboard/work/add/">Add Work</a> </li>
+	    <li><a href="/dashboard/">Home </a> </li>
+</ul>
+
+
+
+
+{% endblock%}

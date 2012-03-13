@@ -1,0 +1,21 @@
+{% extends "base.html"%}
+
+{% block title %} Home {% endblock  %}
+
+<h2>Posts</h2>
+{% block page_head%} Page Title: {% endblock  %}
+{% block head_text %} {{user.get_full_name}}  <a href="/accounts/logout"> Logout</a>  {% endblock%}
+{% block content %} 
+<h3>
+This is static home page you are viewing....
+</h3>
+{% if user.is_authenticated  %}
+{{user.get_full_name}}
+
+{% endif %}
+
+ {% endblock  %}
+{% block sidebar %}
+ {% include"dashboard/sidemenu.html" %}
+  
+{% endblock%}

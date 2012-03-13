@@ -1,0 +1,31 @@
+{% extends "base.html"%}
+
+{% block title %} Twitter linked{% endblock  %}
+{%  block head %}
+
+{% endblock %}
+<h2>Posts</h2>
+{% block page_head%} Page Title: {% endblock  %}
+{% block head_text %} {{user.get_full_name}}  <a href="/accounts/logout"> Logout</a>  {% endblock%}
+{% block content %}
+<h3>Twitter Timeline</h3>
+
+{% for tweet in timeline %}
+
+<p id="timeline">
+<table>
+<tr  bgcolor="#cdcdcd">
+    <td><img src="{{ tweet.user.profile_image_url }}"></td><td><h3> {{ tweet.user.name }}  </h3></td>
+</tr>
+
+<tr><td colspan="2"> {{ tweet.created_at|linebreaks}}  : {{ tweet.text|urlize}}</td></tr>
+</table>
+</p>
+
+{% endfor   %}
+
+
+ {% endblock  %}
+{% block sidebar %}
+ {% include  "dashboard/sidemenu.html" %}
+{% endblock%}

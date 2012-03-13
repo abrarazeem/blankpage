@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd"
+    >
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="/css/main.css" type="text/css">
+	<title>{% block title %}  {% endblock%}</title>
+     {% block head %}        {% endblock %}
+</head>
+<body>
+<div id="head">
+    <div class="center_head">
+        <div id="logo_text">
+            <div style="float:left;padding-right:20px;"><a href="/">BlankPage</a></div>
+            <div id="page_head">{% block page_head %}  {% endblock%}</div>
+        </div>
+        <div id="head_text">
+            {% if user.is_authenticated %}
+    {{user.get_full_name}}<a href="/accounts/logout"> Logout</a>
+
+{% endif %} {% block head_text %}  {% endblock%} </div>
+    </div>
+</div>
+<div id="page">
+    <div id="content">{% block content %} {% endblock%}</div>
+    <div id="sidebar">
+
+        {% block sidebar %}
+
+
+        {% endblock%} </div>
+
+</div>
+<div id="footerwrap">
+    <div id="footer">
+        <ul>
+            <li><a class="mybutton" href="#">Home</a> </li>
+            <li><a class="mybutton" href="/api/doc/">API</a> </li>
+            <li><a class="mybutton" href="#">Developers</a> </li>
+            <li><a class="mybutton" href="#">FAQ'S</a> </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
